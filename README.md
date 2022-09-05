@@ -157,7 +157,7 @@ Parent: harry
 Child: muthoni, 3
 ```
 
-Notice that the parent's `__repr__()` has been overridedn by the child's. This is because the child defined its own `__repr__()` function. Additionally, the `age ` attribute is only present in the child class.
+Notice that the parent's `__repr__()` function has been overriden by the child's. This is because the child defined its own `__repr__()` function. Additionally, the `age ` attribute is only present in the child class.
 
 
 ## Joined Table Inheritance in SQLAlchemy
@@ -170,14 +170,12 @@ ORMs allow applications to manage a database using high-level entities such as c
 
 See [models.py](/app/models.py) for reference.
 
-To create these tables, ensure that you run:
+These tables were created by running the commands shown below. You do not have to run them if you have cloned this repository:
 
 ```python
 (venv)$ flask db init
 (venv)$ flask db migrate
 (venv)$ flask db upgrade
-
-# Hopefully, everything works well.
 ```
 
 ## Update Your Models
