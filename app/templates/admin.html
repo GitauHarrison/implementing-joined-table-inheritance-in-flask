@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Hello, {{ user.username }}!</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{{ url_for('see_students') }}" target="_blank">See All Students</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('see_teachers') }}" target="_blank">See All Teachers</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('see_teachers_and_students') }}" target="_blank">See All Teachers and Students</a>
+            </div>
+        </div>
+    </div>  
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>All students</h1>
+        {% for teacher_and_student in teachers_and_students %}
+            <p>{{ teacher_and_student }}</p>
+        {% endfor %}
+    </div>  
+</div>
+{% endblock %}
