@@ -14,6 +14,10 @@ If they are unfamiliar to you, I will briefly explain them below. Remember, to w
 5. [Define Your Model Using the SQLAlchemy ORM](#define-your-model-using-the-sqlalchemy-orm)
 6. [Update Your Models](#update-your-models)
 
+## Note
+
+>At this point in my understanding of joined table inheritance, I am of the belief that it is only theoretically possible to use it. It is nearly impractical to implement this database design model when building web applications. [See how I came to this conclusion](https://github.com/GitauHarrison/user-roles-in-flask/blob/main/README.md#background).
+
 ## About the Application
 ### Technologies Used
 
@@ -213,3 +217,4 @@ Querrying the database using joined table inheritance is also supported.
 When I click the _see all students_ link, I get a list of all available students registered in the database.
 
 ![See all registered students]()
+
