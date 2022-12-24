@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
-{% block app_content %}
+{% block app_context %}
 <div class="row">
     <div class="col-md-12">
-        <h1>Hello, world!</h1>
+        {% if current_user.type == 'teacher' %}
+            <h1>Teacher Profile</h1>
+            <p>Username: {{ current_user.username }}</p>
+            <p>Identity {{ current_user.identity }} </p>
+            {% for user in users %}
+                <p>{{ user.username }} - {{ user.identity }}</p>
+            {% endfor %}
+        {% else %}
+            <h1>Student Profile</h1>
+            <p>Username: {{ current_user.username }}</p>
+            <p>Identity {{ current_user.identity }} </p>
+            {% for user in users %}
+                <p>{{ user.username }} - {{ user.identity }}</p>
+            {% endfor %}
+        {% endif %}
     </div>  
 </div>
 {% endblock %}

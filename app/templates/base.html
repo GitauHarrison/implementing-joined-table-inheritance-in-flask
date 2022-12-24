@@ -3,15 +3,15 @@
 <!-- Link all style files here -->
 {% block head %}
     {{  super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
 <!-- The title of our application is defined here -->
 {% block title %}
     {% if title %}
-        {{ title }} - Tables
+        {{ title }} - Inheritance
     {% else %}
-    Joined Table Inheritance
+        Joined Table Inheritance
     {% endif %}
 {% endblock %}
 
@@ -26,10 +26,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=" {{ url_for('account') }} ">Joined Table Inheritance</a>
+            <a class="navbar-brand" href=" {{ url_for('index') }} ">Joined Table Inheritance</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">            
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">                
                 {% if current_user.is_authenticated %}
                     <li><a href=" {{ url_for('logout') }} ">Logout</a></li>
                 {% else %}
@@ -41,19 +41,25 @@
 </nav>
 {% endblock %}
 
-<!-- Contents of all our pages will go here -->
+
 {% block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
+<div class="container">
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-info">
                 {% for message in messages %}
-                    <div class="alert alert-warning" role="alert"> {{ message }} </div>
+                    {{ message }}
                 {% endfor %}
-            {% endif %}
-        {% endwith %}
-        {% block app_content %}{% endblock %}
-    </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <!-- Contents of all our pages will go here -->
+    {% block app_context %}{% endblock %}
+</div>
 {% endblock %}
+
 
 <!-- All scripts will go here -->
 {% block scripts %}

@@ -1,44 +1,32 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
-from app.models import User
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
+from wtforms.validators import DataRequired, Length, EqualTo, Email
 
 
-class UserRegistration(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField("Password", validators=[DataRequired()])
+class LoginForm(FlaskForm):
+    """Login Form"""
+    username = StringField('Username', validators=[DataRequired(), Length(1, 64)])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Keep me logged in')
+    submit = SubmitField('Log In')
+
+
+class RegistrationForm(FlaskForm):
+    """Registration Form"""
+    username = StringField('Username', validators=[DataRequired(), Length(1, 64)])
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField(
         'Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Submit')
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user:
-            raise ValidationError('That username is taken. Please choose a different one.')
-
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user:
-            raise ValidationError('That email is taken. Please choose a different one.')
+    identity = SelectField('Who are you?', choices=[('teacher', 'Teacher'), ('student', 'Student')])
+    submit = SubmitField('Save')
 
 
-class AdminRegistration(FlaskForm):
-    residence = StringField('Residence', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class StudentForm(FlaskForm):
+    age = StringField('Age', validators=[DataRequired()])
+    submit = SubmitField('Update')
 
 
-class StudentRegistration(FlaskForm):
-    school = StringField('School', validators=[DataRequired()])
-    submit = SubmitField('Submit')
-
-
-class TeacherRegistration(FlaskForm):
-    course = StringField('Residence', validators=[DataRequired()])
-    submit = SubmitField('Submit')
-
-
-class UserLogin(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class TeacherForm(FlaskForm):
+    course = StringField('Course', validators=[DataRequired()])
+    submit = SubmitField('Update')

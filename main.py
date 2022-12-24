@@ -1,7 +1,7 @@
 from app import app, db
-from app.models import User, Admin, Teacher, Student
+from app.models import User, Student, Teacher
 
 
 @app.shell_context_processor
 def make_shell_context():
-    return dict(db=db, User=User, Teacher=Teacher, Student=Student, Admin=Admin)
+    return dict(db=db, User=User, Teacher=Teacher, Student=Student)
