@@ -16,7 +16,7 @@ If they are unfamiliar to you, I will briefly explain them below. Remember, to w
 
 ## Note
 
->At this point in my understanding of joined table inheritance, I am of the belief that it is only theoretically possible to use it. It is nearly impractical to implement this database design model when building web applications. [See how I came to this conclusion](https://github.com/GitauHarrison/user-roles-in-flask/blob/main/README.md#background).
+>~~At this point in my understanding of joined table inheritance, I am of the belief that it is only theoretically possible to use it. It is nearly impractical to implement this database design model when building web applications. [See how I came to this conclusion](https://github.com/GitauHarrison/user-roles-in-flask/blob/main/README.md#background)~~.
 
 ## About the Application
 ### Technologies Used
